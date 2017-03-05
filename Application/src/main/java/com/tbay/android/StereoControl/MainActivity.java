@@ -24,6 +24,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -46,7 +47,7 @@ import java.net.InetAddress;
  */
 public class MainActivity extends FragmentActivity {
 
-    public static final String TAG = "TCP Client";
+    public static final String TAG = "StereoControl";
     // Whether there is a Wi-Fi connection.
     private static boolean wifiConnected = false;
     // Whether there is a mobile connection.
@@ -100,19 +101,19 @@ public class MainActivity extends FragmentActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             // When the user clicks TEST, display the connection status.
-            case R.id.test_action:
-                checkNetworkConnection();
-                return true;
+            //case R.id.test_action:
+            //    checkNetworkConnection();
+            //    return true;
             // Clear the log view fragment.
             case R.id.clear_action:
                 mLogFragment.getLogView().setText("");
                 return true;
-            case R.id.stop_action:
-                stopSending();
-                return true;
-            case R.id.start_action:
-                startSending();
-                return true;
+            //case R.id.stop_action:
+            //    stopSending();
+            //    return true;
+            //case R.id.start_action:
+            //    startSending("1#");
+            //    return true;
         }
         return false;
     }
@@ -129,21 +130,16 @@ public class MainActivity extends FragmentActivity {
     /**
      * Start sending data to the peer.
      */
-    private void startSending() {
+    private void startSending(String str) {
 
         EditText Ip = (EditText)findViewById(R.id.DestinationIP);
         EditText Port = (EditText)findViewById(R.id.PortNumber);
 
         EditText Txt = (EditText)findViewById(R.id.textView);
 
-        EditText Delay = (EditText)findViewById(R.id.delay);
-        EditText NumTx = (EditText)findViewById(R.id.number_of_tx);
-
         String[] args = new String[4];
         args[0] = Ip.getText().toString() + ':' +  Port.getText().toString();
-        args[1] = Txt.getText().toString();
-        args[2] = Delay.getText().toString();
-        args[3] = NumTx.getText().toString();
+        args[1] = str;
 
         String IPStr = "Sending started at: ";
 
@@ -216,4 +212,34 @@ public class MainActivity extends FragmentActivity {
                 (LogFragment) getSupportFragmentManager().findFragmentById(R.id.log_fragment);
         msgFilter.setNext(mLogFragment.getLogView());
     }
+
+
+    public void TurnOn(View v) {
+        startSending(getString(R.string.ImmediateOn));
+    }
+
+    public void TurnOff(View v) {
+        startSending(getString(R.string.ImmediateOff));
+    }
+
+    public void SetTime(View v) {
+
+        // Format the sting like 2#xx:xx#xx:xx
+
+        String sendStr = getString(R.string.TimeOn);
+        EditText time = (EditText)findViewById(R.id.editOnTime);
+        sendStr = sendStr + time.getText().toString();
+        time = (EditText)findViewById(R.id.editOffTime);
+        sendStr = sendStr + "#" + time.getText().toString();
+
+        startSending(sendStr);
+    }
+
+    public void ResetTime(View v) {
+        startSending(getString(R.string.TimeOff));
+    }
+
+
+
 }
+

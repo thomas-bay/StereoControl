@@ -16,15 +16,9 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     android:background="@color/light_green"
-    <item android:id="@+id/test_action"
+    <item android:id="@+id/setup_action"
         android:showAsAction="ifRoom|withText"
-        android:title="@string/test_text" />
-    <item android:id="@+id/start_action"
-        android:showAsAction="ifRoom|withText"
-        android:title="@string/start_text" />
-    <item android:id="@+id/stop_action"
-        android:showAsAction="ifRoom|withText"
-        android:title="@string/stop_text" />
+        android:title="@string/Setup_text" />
     <item android:id="@+id/clear_action"
         android:showAsAction="ifRoom|withText"
         android:title="@string/clear_text" />

@@ -16,13 +16,27 @@
 
 <resources>
     <string name="test_text">Test</string>
-    <string name="clear_text">Clear</string>
+    <string name="clear_text">Slet</string>
     <string name="wifi_connection">The active connection is wifi.</string>
     <string name="mobile_connection">The active connection is mobile.</string>
     <string name="no_wifi_or_mobile">No wireless or mobile connection.</string>
     <string name="start_text">Start</string>
     <string name="stop_text">Stop</string>
-    <string name="send_text">Dut duttelut!</string>
-    <string name="ip_text">10.0.0.12</string>
+    <string name="ip_text">10.0.0.5</string>
     <string name="port_number">8003</string>
+
+    <string name="ImmediateOn">1#</string>
+    <string name="ImmediateOff">0#</string>
+    <string name="TimeOn">2#</string>
+    <string name="TimeOff">3#</string>
+    <string name="DefaultTimeOn">07:30</string>
+    <string name="DefaultTimeOff">09:00</string>
+
+    <string name="OnString">Tænd</string>
+    <string name="OffString">Sluk</string>
+    <string name="SetString">Sæt tid</string>
+    <string name="ResetString">Nulstil tid</string>
+    <string name="Setup_text">Setup</string>
+    <string name="send_text">send_text</string>
+    <item name="setup_text" type="id">Setup</item>
 </resources>
