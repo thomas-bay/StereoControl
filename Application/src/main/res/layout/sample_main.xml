@@ -84,12 +84,28 @@
      </TableRow>
 
 
-    <Button
-        android:text="@string/SetString"
+    <TableRow
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/SetButton"
-        android:onClick="SetTime" />
+        android:layout_height="match_parent">
+
+        <Button
+            android:text="@string/SetString"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/SetButton"
+            android:onClick="SetTime"
+            android:layout_weight="1" />
+
+        <Button
+            android:text="@string/ResetString"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ResetButton"
+            android:onClick="ResetTime"
+            android:layout_weight="1" />
+
+    </TableRow>
+
 
     <TableLayout
         android:layout_width="match_parent"
@@ -147,13 +163,6 @@
         </TableRow>
 
     </TableLayout>
-
-    <Button
-        android:text="@string/ResetString"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/ResetButton"
-        android:onClick="ResetTime" />
 
 
     <fragment

@@ -79,10 +79,10 @@ public class MainActivity extends FragmentActivity {
         try {
             int ip = wm.getConnectionInfo().getIpAddress();
 
-            TextView SrcIp = (TextView)findViewById(R.id.textView6);
+            //TextView SrcIp = (TextView)findViewById(R.id.textView6);
 
-            String ip2 = String.format("%d.%d.%d.%d", (ip & 0xff), (ip >> 8 & 0xff), (ip >> 16 & 0xff), (ip >> 24 & 0xff));
-            SrcIp.setText(ip2.toCharArray(),0,ip2.length());
+            //String ip2 = String.format("%d.%d.%d.%d", (ip & 0xff), (ip >> 8 & 0xff), (ip >> 16 & 0xff), (ip >> 24 & 0xff));
+            //SrcIp.setText(ip2.toCharArray(),0,ip2.length());
         }
         catch(Exception e)
         {
@@ -135,8 +135,6 @@ public class MainActivity extends FragmentActivity {
 
         EditText Ip = (EditText)findViewById(R.id.DestinationIP);
         EditText Port = (EditText)findViewById(R.id.PortNumber);
-
-        EditText Txt = (EditText)findViewById(R.id.textView);
 
         String[] args = new String[4];
         args[0] = Ip.getText().toString() + ':' +  Port.getText().toString();
