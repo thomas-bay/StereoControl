@@ -26,6 +26,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.tbay.android.common.logger.Log;
@@ -148,6 +149,7 @@ public class MainActivity extends FragmentActivity {
         Log.i(TAG, IPStr);
 
         new BackgroundActivity().execute(args);
+
     }
 
     /**
@@ -155,7 +157,7 @@ public class MainActivity extends FragmentActivity {
      * is wifi or mobile (it could be something else).
      */
     private void checkNetworkConnection() {
-      // BEGIN_INCLUDE(connect)
+/*      // BEGIN_INCLUDE(connect)
       ConnectivityManager connMgr =
           (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
       NetworkInfo activeInfo = connMgr.getActiveNetworkInfo();
@@ -191,6 +193,7 @@ public class MainActivity extends FragmentActivity {
           Log.i(TAG, getString(R.string.no_wifi_or_mobile));
       }
       // END_INCLUDE(connect)
+*/
     }
 
     /** Create a chain of targets that will receive log data */
@@ -215,7 +218,28 @@ public class MainActivity extends FragmentActivity {
 
 
     public void TurnOn(View v) {
-        startSending(getString(R.string.ImmediateOn));
+
+        RadioGroup rg = (RadioGroup)findViewById(R.id.Selector);
+        int id = rg.getCheckedRadioButtonId();
+        char Selection;
+
+        switch (id)
+        {
+            case R.id.Radio:
+                Selection = '0';
+                break;
+            case R.id.Aux:
+                Selection = '1';
+                break;
+            case R.id.TV:
+                Selection = '2';
+                break;
+            default:
+                Selection = '3';
+                break;
+        }
+
+        startSending(getString(R.string.ImmediateOn)+Selection);
     }
 
     public void TurnOff(View v) {

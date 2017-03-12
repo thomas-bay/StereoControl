@@ -24,19 +24,65 @@
     android:layout_height="wrap_content"
     tools:context=".MainActivity">
 
-    <Button
-        android:text="@string/OnString"
+    <TableRow
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/StartButton"
-        android:onClick="TurnOn" />
+        android:layout_height="match_parent" >
 
-    <Button
-        android:text="@string/OffString"
+        <Button
+            android:text="@string/OnString"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/StartButton"
+            android:onClick="TurnOn"
+            android:layout_weight="1" />
+
+        <Button
+            android:text="@string/OffString"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/OffButton"
+            android:onClick="TurnOff"
+            android:layout_weight="1" />
+
+    </TableRow>
+
+
+    <TableRow
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/OffButton"
-        android:onClick="TurnOff" />
+        android:layout_height="match_parent"  >
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/Selector"
+            android:checkedButton="@+id/Radio">
+
+            <RadioButton
+                android:text="Radio"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/Radio"
+                android:layout_weight="1" />
+
+            <RadioButton
+                android:text="Aux"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/Aux"
+                android:layout_weight="1" />
+
+            <RadioButton
+                android:text="TV"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/TV"
+                android:layout_weight="1" />
+
+        </RadioGroup>
+
+     </TableRow>
+
 
     <Button
         android:text="@string/SetString"
@@ -44,13 +90,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/SetButton"
         android:onClick="SetTime" />
-
-    <Button
-        android:text="@string/ResetString"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/ResetButton"
-        android:onClick="ResetTime" />
 
     <TableLayout
         android:layout_width="match_parent"
@@ -61,12 +100,15 @@
             android:layout_height="match_parent" >
 
             <EditText
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:text="Tænd klokken:"
                 android:ems="10"
-                android:id="@+id/OnTimeLabel" />
+                android:id="@+id/OnTimeLabel"
+                android:editable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false" />
 
             <EditText
                 android:layout_width="wrap_content"
@@ -88,7 +130,10 @@
                 android:inputType="textPersonName"
                 android:text="Sluk klokken:"
                 android:ems="10"
-                android:id="@+id/editText4" />
+                android:id="@+id/editText4"
+                android:focusable="false"
+                android:editable="false"
+                android:focusableInTouchMode="false" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -97,97 +142,18 @@
                 android:ems="10"
                 android:id="@+id/editOffTime"
                 android:singleLine="true"
-                android:text="@string/DefaultTimeOff" />
+                android:text="@string/DefaultTimeOff"
+                android:width="10dp" />
         </TableRow>
 
     </TableLayout>
 
-    <TableLayout
+    <Button
+        android:text="@string/ResetString"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|top"
-        android:background="@color/light_green"
-        android:orientation="vertical">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="2dp"
-            android:layout_marginTop="6dp">
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="2dp"
-            android:visibility="invisible">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Destination IP:"
-                android:id="@+id/textView4"
-                android:layout_column="0"
-                android:layout_marginLeft="2dp"
-                android:gravity="center_vertical"
-                android:clickable="false"
-                android:visibility="invisible" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="@string/ip_text"
-                android:id="@+id/DestinationIP"
-                android:nestedScrollingEnabled="false"
-                android:clickable="true"
-                android:enabled="true"
-                android:focusable="true"
-                android:layout_weight="0.11"
-                android:layout_column="1"
-                android:lines="1"
-                android:windowSoftInputMode="stateHidden"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:visibility="invisible" />
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/port_number"
-                android:id="@+id/PortNumber"
-                android:layout_column="2"
-                android:textSize="14sp"
-                android:inputType="numberDecimal"
-                android:singleLine="true"
-                android:numeric="decimal"
-                android:visibility="visible" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="2dp" >
-
-        </TableRow>
-
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="2dp">
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="2dp">
-
-        </TableRow>
-    </TableLayout>
+        android:id="@+id/ResetButton"
+        android:onClick="ResetTime" />
 
 
     <fragment
@@ -201,5 +167,21 @@
         android:layout_height="wrap_content"
         android:name="com.tbay.android.common.logger.LogFragment"
         android:id="@+id/log_fragment" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="10.0.0.5"
+        android:ems="10"
+        android:id="@+id/DestinationIP" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="8003"
+        android:ems="10"
+        android:id="@+id/PortNumber" />
 
 </LinearLayout>

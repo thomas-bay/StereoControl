@@ -7,6 +7,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.net.SocketAddress;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
 
 
 /**
@@ -36,7 +39,13 @@ public class BackgroundActivity extends AsyncTask<String, Void, Void>{
             }
 
             Log.i(TAG, "Connecting... ");
-            Socket socket = new Socket(IpAdr, Integer.parseInt(PortNum));
+
+            InetAddress addr = InetAddress.getByName(IpAdr);
+            SocketAddress sockaddr = new InetSocketAddress(addr, Integer.parseInt(PortNum));
+
+            Socket socket = new Socket();
+            socket.connect(sockaddr, 5000);
+
             Log.i(TAG, "Connection opened to " + ip[0]);
 
             OutputStream Out = socket.getOutputStream();
