@@ -16,10 +16,8 @@
 
 package com.tbay.android.StereoControl;
 
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.net.wifi.WifiManager;
+import android.view.WindowManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
@@ -27,15 +25,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioGroup;
-import android.widget.TextView;
+import android.widget.Button;
 
 import com.tbay.android.common.logger.Log;
 import com.tbay.android.common.logger.LogFragment;
 import com.tbay.android.common.logger.LogWrapper;
 import com.tbay.android.common.logger.MessageOnlyLogFilter;
-
-import java.io.IOException;
-import java.net.InetAddress;
 
 
 /**
@@ -67,7 +62,6 @@ public class MainActivity extends FragmentActivity {
         SimpleTextFragment introFragment = (SimpleTextFragment)
                     getSupportFragmentManager().findFragmentById(R.id.intro_fragment);
         introFragment.setText(R.string.intro_message);
-        //introFragment.getTextView().setTextSize(TypedValue.COMPLEX_UNIT_DIP, 16.0f);
 
         // Initialize the logging framework.
         initializeLogging();
@@ -78,18 +72,14 @@ public class MainActivity extends FragmentActivity {
 
         try {
             int ip = wm.getConnectionInfo().getIpAddress();
-
-            //TextView SrcIp = (TextView)findViewById(R.id.textView6);
-
-            //String ip2 = String.format("%d.%d.%d.%d", (ip & 0xff), (ip >> 8 & 0xff), (ip >> 16 & 0xff), (ip >> 24 & 0xff));
-            //SrcIp.setText(ip2.toCharArray(),0,ip2.length());
         }
         catch(Exception e)
         {
             String S = e.toString();  // Just for debug
         }
 
-
+        // Set focus away from edit fields to avoid keyboard popping up..
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     }
 
     @Override
@@ -100,32 +90,12 @@ public class MainActivity extends FragmentActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            // When the user clicks TEST, display the connection status.
-            //case R.id.test_action:
-            //    checkNetworkConnection();
-            //    return true;
-            // Clear the log view fragment.
-            case R.id.clear_action:
-                mLogFragment.getLogView().setText("");
-                return true;
-            //case R.id.stop_action:
-            //    stopSending();
-            //    return true;
-            //case R.id.start_action:
-            //    startSending("1#");
-            //    return true;
-        }
+        if (item.getItemId() == R.id.clear_action)
+        {
+            mLogFragment.getLogView().setText("");
+            return true;
+         }
         return false;
-    }
-
-    /**
-     * Stop sending data to the peer.
-     */
-    private void stopSending() {
-
-        Log.i(TAG, "Sending stopped.");
-        //mLogFragment.getLogView().appendToLog("stopped");
     }
 
     /**
@@ -148,50 +118,6 @@ public class MainActivity extends FragmentActivity {
 
         new BackgroundActivity().execute(args);
 
-    }
-
-    /**
-     * Check whether the device is connected, and if so, whether the connection
-     * is wifi or mobile (it could be something else).
-     */
-    private void checkNetworkConnection() {
-/*      // BEGIN_INCLUDE(connect)
-      ConnectivityManager connMgr =
-          (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-      NetworkInfo activeInfo = connMgr.getActiveNetworkInfo();
-      if (activeInfo != null && activeInfo.isConnected()) {
-          wifiConnected = activeInfo.getType() == ConnectivityManager.TYPE_WIFI;
-          mobileConnected = activeInfo.getType() == ConnectivityManager.TYPE_MOBILE;
-          if(wifiConnected) {
-              Log.i(TAG, getString(R.string.wifi_connection));
-
-              EditText Ip = (EditText)findViewById(R.id.DestinationIP);
-
-              String ged = Ip.getText().toString();
-
-              try {
-                  InetAddress address = InetAddress.getByName(Ip.getText().toString());
-                  if (address.isReachable(2000))
-                      Log.i(TAG, Ip.toString() + " is reachable");
-                  else
-                      Log.i(TAG, Ip.toString() + " is not reachable");
-              }
-              catch(IOException e) {
-                  Log.i(TAG, e.getMessage());
-              }
-              catch(Exception e) {
-                  Log.i(TAG, "Exception: " + e.getMessage());
-              }
-
-
-          } else if (mobileConnected){
-              Log.i(TAG, getString(R.string.mobile_connection));
-          }
-      } else {
-          Log.i(TAG, getString(R.string.no_wifi_or_mobile));
-      }
-      // END_INCLUDE(connect)
-*/
     }
 
     /** Create a chain of targets that will receive log data */

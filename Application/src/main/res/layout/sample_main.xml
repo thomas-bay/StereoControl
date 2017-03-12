@@ -133,7 +133,10 @@
                 android:ems="10"
                 android:id="@+id/editOnTime"
                 android:singleLine="true"
-                android:text="@string/DefaultTimeOn" />
+                android:text="@string/DefaultTimeOn"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:maxLength="5" />
         </TableRow>
 
         <TableRow
@@ -159,7 +162,10 @@
                 android:id="@+id/editOffTime"
                 android:singleLine="true"
                 android:text="@string/DefaultTimeOff"
-                android:width="10dp" />
+                android:width="10dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:maxLength="5" />
         </TableRow>
 
     </TableLayout>
@@ -183,7 +189,10 @@
         android:inputType="textPersonName"
         android:text="10.0.0.5"
         android:ems="10"
-        android:id="@+id/DestinationIP" />
+        android:id="@+id/DestinationIP"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:visibility="invisible" />
 
     <EditText
         android:layout_width="match_parent"
@@ -191,6 +200,9 @@
         android:inputType="textPersonName"
         android:text="8003"
         android:ems="10"
-        android:id="@+id/PortNumber" />
+        android:id="@+id/PortNumber"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:visibility="invisible" />
 
 </LinearLayout>
