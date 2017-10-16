@@ -144,15 +144,15 @@
             android:layout_height="match_parent" >
 
             <EditText
+                android:id="@+id/OffTimeLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:text="Sluk klokken:"
-                android:ems="10"
-                android:id="@+id/editText4"
-                android:focusable="false"
                 android:editable="false"
-                android:focusableInTouchMode="false" />
+                android:ems="10"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:inputType="textPersonName"
+                android:text="Sluk klokken:" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -172,16 +172,16 @@
 
 
     <fragment
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/intro_fragment"
         android:name="com.tbay.android.StereoControl.SimpleTextFragment"
-        android:id="@+id/intro_fragment" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <fragment
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/log_fragment"
         android:name="com.tbay.android.common.logger.LogFragment"
-        android:id="@+id/log_fragment" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <EditText
         android:layout_width="match_parent"

@@ -46,6 +46,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.tbay.android.StereoControl.MainActivity" />
         </activity>
+        <activity android:name=".SetupActivity"></activity>
     </application>
 
 </manifest>

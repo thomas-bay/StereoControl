@@ -4,7 +4,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath 'com.android.tools.build:gradle:2.3.3'
     }
 }
 
@@ -16,6 +16,8 @@ repositories {
 
 dependencies {
     compile 'com.android.support:support-v4:21.0.3'
+    compile 'com.android.support:appcompat-v7:21.0.3'
+    compile 'com.android.support.constraint:constraint-layout:+'
 }
 
 // The sample build uses multiple directories to
@@ -36,7 +38,7 @@ android {
         }
     }
     compileSdkVersion 21
-    buildToolsVersion '21.1.2'
+    buildToolsVersion '25.0.0'
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 21

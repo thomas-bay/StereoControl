@@ -16,6 +16,8 @@
 
 package com.tbay.android.StereoControl;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.net.wifi.WifiManager;
 import android.view.WindowManager;
 import android.os.Bundle;
@@ -68,7 +70,7 @@ public class MainActivity extends FragmentActivity {
 
         // Initialize the source IP string
 
-        WifiManager wm = (WifiManager) getSystemService(WIFI_SERVICE);
+        @SuppressLint("WifiManagerLeak") WifiManager wm = (WifiManager) getSystemService(WIFI_SERVICE);
 
         try {
             int ip = wm.getConnectionInfo().getIpAddress();
@@ -94,6 +96,13 @@ public class MainActivity extends FragmentActivity {
         {
             mLogFragment.getLogView().setText("");
             return true;
+         }
+
+         if (item.getItemId() == R.id.setup_action)
+         {
+
+             Intent intent = new Intent(this, SetupActivity.class);
+             startActivity(intent);
          }
         return false;
     }
