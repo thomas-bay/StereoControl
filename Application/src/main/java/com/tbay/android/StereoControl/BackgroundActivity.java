@@ -44,9 +44,9 @@ public class BackgroundActivity extends AsyncTask<String, Void, Void>{
             SocketAddress sockaddr = new InetSocketAddress(addr, Integer.parseInt(PortNum));
 
             Socket socket = new Socket();
-            socket.connect(sockaddr, 5000);
+            socket.connect(sockaddr, 2000);
 
-            Log.i(TAG, "Connection opened to " + ip[0]);
+            Log.i(TAG, "Connection opened to " + IpAdr + ":" + PortNum);
 
             OutputStream Out = socket.getOutputStream();
             InputStream In = socket.getInputStream();

@@ -28,6 +28,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.tbay.android.common.logger.Log;
 import com.tbay.android.common.logger.LogFragment;
@@ -54,6 +55,7 @@ public class MainActivity extends FragmentActivity {
     // Reference to the fragment showing events, so we can clear it with a button
     // as necessary.
     private LogFragment mLogFragment;
+    private  AppPreferences mAppPrefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +66,10 @@ public class MainActivity extends FragmentActivity {
         SimpleTextFragment introFragment = (SimpleTextFragment)
                     getSupportFragmentManager().findFragmentById(R.id.intro_fragment);
         introFragment.setText(R.string.intro_message);
+
+        // Get selection from shared Preferences. The preference is set when selecting a radiobutton.
+        // Then set the text in the editable field to the last selected text (currently a default text)
+        mAppPrefs = new AppPreferences(getApplicationContext());
 
         // Initialize the logging framework.
         initializeLogging();
@@ -112,21 +118,26 @@ public class MainActivity extends FragmentActivity {
      */
     private void startSending(String str) {
 
-        EditText Ip = (EditText)findViewById(R.id.DestinationIP);
-        EditText Port = (EditText)findViewById(R.id.PortNumber);
+        // Check parameters and toast
+        if (Integer.parseInt(mAppPrefs.ControlPort) > 65535)
+        {
+            Toast.makeText(MainActivity.this, "Port number should be < 65536",
+                    Toast.LENGTH_LONG).show();
+        }
+        else
+        {
+            String[] args = new String[4];
+            args[0] = mAppPrefs.ControlIp + ':' + mAppPrefs.ControlPort;
+            args[1] = str;
 
-        String[] args = new String[4];
-        args[0] = Ip.getText().toString() + ':' +  Port.getText().toString();
-        args[1] = str;
+            String IPStr = "Sending started at: ";
 
-        String IPStr = "Sending started at: ";
+            IPStr += args[0];
 
-        IPStr += Ip.getText();
+            Log.i(TAG, IPStr);
 
-        Log.i(TAG, IPStr);
-
-        new BackgroundActivity().execute(args);
-
+            new BackgroundActivity().execute(args);
+        }
     }
 
     /** Create a chain of targets that will receive log data */
@@ -195,8 +206,5 @@ public class MainActivity extends FragmentActivity {
     public void ResetTime(View v) {
         startSending(getString(R.string.TimeOff));
     }
-
-
-
 }
 
