@@ -1,6 +1,5 @@
 package com.tbay.android.StereoControl;
 
-
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
@@ -265,3 +264,4 @@ public class SettingsActivity extends PreferenceActivity {
         }
     }
 }
+
