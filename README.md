@@ -1,2 +1,2 @@
 # StereoControl
-App for contolling Photo relays for control of Stereo  
+Android App for controlling Photon relays for control of Stereo stack 
