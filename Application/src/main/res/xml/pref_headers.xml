@@ -2,6 +2,7 @@
 
     <!-- These settings headers are only used on tablets. -->
 
+    <!--
     <header
         android:fragment="com.tbay.android.StereoControl.SettingsActivity$GeneralPreferenceFragment"
         android:icon="@drawable/ic_info_black_24dp"
@@ -16,5 +17,5 @@
         android:fragment="com.tbay.android.StereoControl.SettingsActivity$DataSyncPreferenceFragment"
         android:icon="@drawable/ic_sync_black_24dp"
         android:title="@string/pref_header_data_sync" />
-
+    -->
 </preference-headers>
