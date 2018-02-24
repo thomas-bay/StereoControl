@@ -66,16 +66,16 @@ public class LogFragment extends Fragment {
         mLogView.setLayoutParams(logParams);
         mLogView.setClickable(true);
         mLogView.setFocusable(true);
-        mLogView.setTypeface(Typeface.MONOSPACE);
+        //mLogView.setTypeface(Typeface.MONOSPACE);
 
         // Want to set padding as 16 dips, setPadding takes pixels.  Hooray math!
-        int paddingDips = 16;
-        double scale = getResources().getDisplayMetrics().density;
-        int paddingPixels = (int) ((paddingDips * (scale)) + .5);
-        mLogView.setPadding(paddingPixels, paddingPixels, paddingPixels, paddingPixels);
-        mLogView.setCompoundDrawablePadding(paddingPixels);
+        //int paddingDips = 16;
+        //double scale = getResources().getDisplayMetrics().density;
+        //int paddingPixels = (int) ((paddingDips * (scale)) + .5);
+        //mLogView.setPadding(paddingPixels, paddingPixels, paddingPixels, paddingPixels);
+        //mLogView.setCompoundDrawablePadding(paddingPixels);
 
-        mLogView.setGravity(Gravity.BOTTOM);
+        //mLogView.setGravity(Gravity.BOTTOM);
         mLogView.setTextAppearance(getActivity(), android.R.style.TextAppearance_Holo_Small);
 
         mScrollView.addView(mLogView);

@@ -17,7 +17,9 @@
 package com.tbay.android.StereoControl;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.wifi.WifiManager;
 import android.view.WindowManager;
 import android.os.Bundle;
@@ -27,7 +29,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioGroup;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.tbay.android.common.logger.Log;
@@ -52,6 +53,12 @@ public class MainActivity extends FragmentActivity {
     // Whether there is a mobile connection.
     private static boolean mobileConnected = false;
 
+    private static Context context;
+
+    public static Context getAppContext() {
+        return MainActivity.context;
+    }
+
     // Reference to the fragment showing events, so we can clear it with a button
     // as necessary.
     private LogFragment mLogFragment;
@@ -60,12 +67,15 @@ public class MainActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        MainActivity.context = getApplicationContext();
+
         setContentView(R.layout.sample_main);
 
         // Initialize text fragment that displays intro text.
         SimpleTextFragment introFragment = (SimpleTextFragment)
                     getSupportFragmentManager().findFragmentById(R.id.intro_fragment);
         introFragment.setText(R.string.intro_message);
+        //introFragment.getTextView().setTextAppearance(context, android.R.style.TextAppearance_Holo_Small);
 
         // Get selection from shared Preferences. The preference is set when selecting a radiobutton.
         // Then set the text in the editable field to the last selected text (currently a default text)
@@ -101,6 +111,8 @@ public class MainActivity extends FragmentActivity {
         if (item.getItemId() == R.id.clear_action)
         {
             mLogFragment.getLogView().setText("");
+            //mLogFragment.getLogView().setBackgroundColor(Color.WHITE);
+            findViewById(R.id.log_fragment).setBackgroundColor(Color.WHITE);
             return true;
          }
 
@@ -117,6 +129,7 @@ public class MainActivity extends FragmentActivity {
      * Start sending data to the peer.
      */
     private void startSending(String str) {
+
 
         // Check parameters and toast
         if (Integer.parseInt(mAppPrefs.ControlPort) > 65535)
@@ -136,7 +149,8 @@ public class MainActivity extends FragmentActivity {
 
             Log.i(TAG, IPStr);
 
-            new BackgroundActivity().execute(args);
+            BackgroundActivity b = new BackgroundActivity(this);
+            b.execute(args);
         }
     }
 
@@ -184,6 +198,14 @@ public class MainActivity extends FragmentActivity {
         }
 
         startSending(getString(R.string.ImmediateOn)+Selection);
+    }
+
+    public void ShowError(String strErr, int color)
+    {
+        findViewById(R.id.log_fragment).setBackgroundColor(color);
+
+        //Button bt = (Button)findViewById(R.id.ResetButton);
+        //bt.setTextColor(color);
     }
 
     public void TurnOff(View v) {

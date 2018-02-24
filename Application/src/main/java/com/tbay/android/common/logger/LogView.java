@@ -73,7 +73,7 @@ public class LogView extends TextView implements LogNode {
             default:
                 break;
         }
-
+        //fragment.getView().setBackgroundColor(Color.WHITE);
         // Handily, the Log class has a facility for converting a stack trace into a usable string.
         String exceptionStr = null;
         if (tr != null) {

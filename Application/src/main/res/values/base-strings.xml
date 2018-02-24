@@ -15,7 +15,7 @@
  limitations under the License.
 -->
 <resources>
-    <string name="app_name">Stereo Kontrol v1.01</string>
+    <string name="app_name">Stereo Kontrol v1.02</string>
     <string name="intro_message">
         <![CDATA[Setup: Sæt IP og port. Slet: Sletter log vinduet]]>
     </string>

@@ -1,6 +1,12 @@
 package com.tbay.android.StereoControl;
 
+import android.graphics.Color;
 import android.os.AsyncTask;
+import android.app.Activity;
+import android.content.Context;
+import android.view.View;
+import android.widget.Button;
+
 import com.tbay.android.common.logger.Log;
 
 import java.io.IOException;
@@ -18,6 +24,32 @@ import java.net.InetSocketAddress;
 public class BackgroundActivity extends AsyncTask<String, Void, Void>{
 
     public static final String TAG = "StereoControl BackgroundActivity";
+
+    MainActivity mMainAct;
+
+    public BackgroundActivity(MainActivity activity) {
+
+        mMainAct = activity;
+    }
+
+    protected Void Result(String statusStr, Boolean res) {
+
+        final String status = statusStr;
+        int col1 = Color.argb(150, 0, 255, 0);
+        if (res == false)
+            col1 = Color.argb(150, 255, 0, 0);
+        final int col = col1;
+
+        mMainAct.runOnUiThread(new Runnable()
+                               {
+                                   @Override
+                                   public void run() {
+                                       mMainAct.ShowError(status, col);
+                                   }
+                               });
+
+        return null;
+    }
 
 //    @Override
     protected Void doInBackground(String... ip) {
@@ -59,13 +91,32 @@ public class BackgroundActivity extends AsyncTask<String, Void, Void>{
 
             socket.close();
             Log.i(TAG, "Connection closed.");
+
+
+            //mMainAct.ShowError("Command accepted", Color.GREEN);
+
+            Result("Command accepted", true);
+            /*
+            mMainAct.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    mMainAct.ShowError("xx", Color.argb(10, 0, 10, 0));
+                }//public void run() {
+            });
+            */
+
         }
         catch (IOException e)
         {
-            Log.i(TAG, "Error! "+e.getMessage());
+            String errStr = "Error! " + e.getMessage();
+            Log.i(TAG, errStr);
+            Result(errStr, false);
         }
 
         return null;
     }
-
+    //    @Override
+    protected Void onPostExecute() {
+        return null;
+    }
 }

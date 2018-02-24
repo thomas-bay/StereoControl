@@ -56,7 +56,7 @@ public class SimpleTextFragment extends Fragment {
 
         // Create a new TextView and set its text to whatever was provided.
         mTextView = new TextView(getActivity());
-        mTextView.setGravity(Gravity.LEFT);
+        //mTextView.setGravity(Gravity.LEFT);
 
         if (mText != null) {
             mTextView.setText(mText);

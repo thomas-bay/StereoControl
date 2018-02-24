@@ -29,19 +29,25 @@
 
         <Button
             android:id="@+id/StartButton"
+            style="@android:style/Widget.Button.Inset"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:elegantTextHeight="false"
+            android:elevation="7dp"
             android:onClick="TurnOn"
-            android:text="@string/OnString" />
+            android:text="@string/OnString"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/OffButton"
+            style="@android:style/Widget.Button.Inset"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="TurnOff"
-            android:text="@string/OffString" />
+            android:text="@string/OffString"
+            android:textSize="18sp" />
 
     </TableRow>
 
@@ -55,28 +61,34 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checkedButton="@+id/Radio"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:textAlignment="center">
 
             <RadioButton
                 android:id="@+id/Radio"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="24dp"
                 android:layout_weight="1"
-                android:text="Radio" />
+                android:text="Radio"
+                android:textAlignment="center"
+                android:textSize="18sp" />
 
             <RadioButton
                 android:id="@+id/Aux"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Aux" />
+                android:text="Aux"
+                android:textSize="18sp" />
 
             <RadioButton
                 android:id="@+id/TV"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="TV" />
+                android:text="TV"
+                android:textSize="18sp" />
 
         </RadioGroup>
 
@@ -89,19 +101,23 @@
 
         <Button
             android:id="@+id/SetButton"
+            style="@android:style/Widget.Button.Inset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="SetTime"
-            android:text="@string/SetString" />
+            android:text="@string/SetString"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/ResetButton"
+            style="@android:style/Widget.Button.Inset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="ResetTime"
-            android:text="@string/ResetString" />
+            android:text="@string/ResetString"
+            android:textSize="18sp" />
     </TableRow>
 
 
@@ -173,13 +189,18 @@
         android:name="com.tbay.android.StereoControl.SimpleTextFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:layout="@layout/dummy" />
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp" />
 
     <fragment
         android:id="@+id/log_fragment"
         android:name="com.tbay.android.common.logger.LogFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:layout="@layout/dummy" />
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:background="@android:color/background_dark" />
 
 </LinearLayout>
