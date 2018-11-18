@@ -38,7 +38,7 @@
     <string name="ResetString">Nulstil tid</string>
     <string name="Setup_text">Setup</string>
     <string name="send_text">send_text</string>
-    <item name="setup_text" type="id">Setup</item>
+    <item name="setup_text" type="id"></item>
     <string name="title_activity_settings">Settings</string>
 
     <!-- Strings related to Settings -->

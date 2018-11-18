@@ -1,1 +1,1 @@
-[{"outputType":{"type":"APK"},"apkInfo":{"type":"MAIN","splits":[],"versionCode":1},"path":"Application-release.apk","properties":{"packageId":"com.tbay.android.StereoControl","split":"","minSdkVersion":"21"}}]
+[{"outputType":{"type":"APK"},"apkInfo":{"type":"MAIN","splits":[],"versionCode":1,"versionName":"1.0","enabled":true,"outputFile":"Application-release.apk","fullName":"release","baseName":"release"},"path":"Application-release.apk","properties":{}}]
