@@ -43,7 +43,7 @@ import android.view.ViewGroup;
 import android.widget.ScrollView;
 
 /**
- * Simple fraggment which contains a LogView and uses is to output log data it receives
+ * Simple fragment which contains a LogView and uses is to output log data it receives
  * through the LogNode interface.
  */
 public class LogFragment extends Fragment {
@@ -76,7 +76,7 @@ public class LogFragment extends Fragment {
         //mLogView.setCompoundDrawablePadding(paddingPixels);
 
         //mLogView.setGravity(Gravity.BOTTOM);
-        mLogView.setTextAppearance(getActivity(), android.R.style.TextAppearance_Holo_Small);
+        //mLogView.setTextAppearance(getActivity(), android.R.style.TextAppearance_Holo_Small);
 
         mScrollView.addView(mLogView);
         return mScrollView;

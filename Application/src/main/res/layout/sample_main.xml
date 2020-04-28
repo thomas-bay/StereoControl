@@ -23,6 +23,102 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <CheckedTextView
+        android:id="@+id/checkedTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="StereoControl" />
+
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/OnTimeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:background="@android:color/transparent"
+                android:ems="10"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:inputType="textPersonName"
+                android:text="Tænd klokken:" />
+
+            <EditText
+                android:id="@+id/editOnTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:inputType="time"
+                android:maxLength="5"
+                android:text="@string/DefaultTimeOn" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/OffTimeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:background="@android:color/transparent"
+                android:ems="10"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:inputType="textPersonName"
+                android:text="Sluk klokken:" />
+
+            <EditText
+                android:id="@+id/editOffTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:inputType="time"
+                android:maxLength="5"
+                android:text="@string/DefaultTimeOff" />
+        </TableRow>
+
+    </TableLayout>
+
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/SetButton"
+            style="@android:style/Widget.Button.Inset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="SetTime"
+            android:text="@string/SetString"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/ResetButton"
+            style="@android:style/Widget.Button.Inset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="ResetTime"
+            android:text="@string/ResetString"
+            android:textSize="18sp" />
+    </TableRow>
+
+
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -94,95 +190,16 @@
 
     </TableRow>
 
-
-    <TableRow
+    <fragment
+        android:id="@+id/log_fragment"
+        android:name="com.tbay.android.common.logger.LogFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <Button
-            android:id="@+id/SetButton"
-            style="@android:style/Widget.Button.Inset"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="SetTime"
-            android:text="@string/SetString"
-            android:textSize="18sp" />
-
-        <Button
-            android:id="@+id/ResetButton"
-            style="@android:style/Widget.Button.Inset"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="ResetTime"
-            android:text="@string/ResetString"
-            android:textSize="18sp" />
-    </TableRow>
-
-
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <EditText
-                android:id="@+id/OnTimeLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:background="@android:color/transparent"
-                android:ems="10"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
-                android:inputType="textPersonName"
-                android:text="Tænd klokken:" />
-
-            <EditText
-                android:id="@+id/editOnTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:inputType="time"
-                android:maxLength="5"
-                android:text="@string/DefaultTimeOn" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <EditText
-                android:id="@+id/OffTimeLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:background="@android:color/transparent"
-                android:ems="10"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
-                android:inputType="textPersonName"
-                android:text="Sluk klokken:" />
-
-            <EditText
-                android:id="@+id/editOffTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:inputType="time"
-                android:maxLength="5"
-                android:text="@string/DefaultTimeOff" />
-        </TableRow>
-
-    </TableLayout>
-
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginRight="8dp"
+        android:background="@android:color/background_dark" />
 
     <fragment
         android:id="@+id/intro_fragment"
@@ -191,16 +208,5 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp" />
-
-    <fragment
-        android:id="@+id/log_fragment"
-        android:name="com.tbay.android.common.logger.LogFragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
-        android:background="@android:color/background_dark" />
 
 </LinearLayout>

@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Application/Application.iml" filepath="$PROJECT_DIR$/Application/Application.iml" />
-      <module fileurl="file://$PROJECT_DIR$/StereoControl.iml" filepath="$PROJECT_DIR$/StereoControl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Application/Application.iml" filepath="$PROJECT_DIR$/Application/Application.iml" group="StereoControl/Application" />
+      <module fileurl="file://$PROJECT_DIR$/StereoControl.iml" filepath="$PROJECT_DIR$/StereoControl.iml" group="StereoControl" />
     </modules>
   </component>
 </project>
