@@ -18,7 +18,7 @@ repositories {
 
 dependencies {
 //    compile 'com.android.support:support-v4:21.0.3'
-    compile 'com.android.support:appcompat-v7:21.0.3'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
 //    compile 'com.android.support.constraint:constraint-layout:+'
 //    compile 'com.android.support:support-v13:28.0.0'
 }
